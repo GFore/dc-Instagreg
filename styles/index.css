@@ -2,6 +2,14 @@
 html {box-sizing: border-box;}
 *, *:before, *:after {box-sizing: inherit;}
 
+/* chef aquino's special sauce */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
 h1 {color: red;}
 
 /* * {outline: 1px red solid;} */
@@ -14,12 +22,39 @@ main {
 }
 
 .picHolder {
-    width: 66%;
-    /* margin: 0 auto; */
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: aquamarine; */
+    justify-content: center;
 }
 
-.picHolder > img {
-    height: 150px;
-    width: 20%;
-    margin: 5px;
+.picThumbnailHolder {
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    /* justify-content: space-around; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.picThumbnailHolder > img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+
+.picture-frame {
+    width: 80%;
+    /* outline: 2px solid red; */
+    margin: 0 auto;
+    text-align: center;
+}
+.picture-frame > img {
+    /* the img adapts to its parent */
+    /* definitely, absolutely use both max-height and max-width */
+    max-height: 100%;
+    max-width: 100%;
 }
