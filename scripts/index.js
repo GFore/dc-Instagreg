@@ -29,6 +29,7 @@ let picIndex = 0;
 let maxPicIndex = picsArray.length;
 const picDiv = document.querySelector('[data-pic]');
 const picBig = document.querySelector('[data-big]');
+const modaler = document.querySelector('[data-modal]');
 
 function makeImg(pos) {
     const newImg = document.createElement('img');
@@ -57,6 +58,7 @@ function getPic() {
         // document.body.appendChild(createThumbnail(a.slice(5, a.length-2)));
         picBig.innerHTML = '';
         picBig.appendChild(makeImg(a.slice(5, a.length-2)));
+        modaler.classList.toggle('modal-hidden');
     });
 
     picIndex = (picIndex+1) % maxPicIndex;

@@ -18,7 +18,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 .picHolder {
@@ -34,7 +33,6 @@ main {
     width: 200px;
     margin: 10px;
     text-align: center;
-    /* justify-content: space-around; */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -45,16 +43,31 @@ main {
     max-width: 100%;
 }
 
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-hidden {
+    display: none;
+}
 
 .picture-frame {
-    width: 80%;
+    width: 90%;
     /* outline: 2px solid red; */
-    margin: 0 auto;
+    margin: 20px;
     text-align: center;
 }
 .picture-frame > img {
-    /* the img adapts to its parent */
-    /* definitely, absolutely use both max-height and max-width */
     max-height: 100%;
     max-width: 100%;
 }
+
