@@ -1,1 +1,7 @@
-document.write("<h1>Welcome to InstGreg!</h1>");
+const picsArray = [
+    {
+        'url': '',
+        'altText': '',
+    }
+];
+
