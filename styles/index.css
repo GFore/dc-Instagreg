@@ -67,6 +67,7 @@ main {
 
 .picFrame {
     width: 90%;
+    height: 95%;
     /* outline: 2px solid red; */
     margin: 20px;
     text-align: center;
