@@ -36,6 +36,11 @@ main {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    transition: background-position 0.35s;
+}
+
+.picThumbnailHolder:hover {
+    background-position: unset;
 }
 
 .picThumbnailHolder > img {
@@ -60,13 +65,13 @@ main {
     display: none;
 }
 
-.picture-frame {
+.picFrame {
     width: 90%;
     /* outline: 2px solid red; */
     margin: 20px;
     text-align: center;
 }
-.picture-frame > img {
+.picFrame > img {
     max-height: 100%;
     max-width: 100%;
 }
