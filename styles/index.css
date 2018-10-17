@@ -10,7 +10,7 @@ html, body {
     width: 100%;
 }
 
-h1 {color: red;}
+h1 {color: red; font-family: cursive; text-align: center;}
 
 /* * {outline: 1px red solid;} */
 
@@ -36,12 +36,15 @@ main {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: background-position 0.35s;
+    border-radius: 10%;
+    transition: background-position 0.5s;
+    /* transition: border-radius 0.25s; */
     /* order: 1; */
 }
 
 .picThumbnailHolder:hover {
     background-position: unset;
+    border-radius: 30%;
 }
 
 .picThumbnailHolder > img {
