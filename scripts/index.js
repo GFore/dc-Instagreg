@@ -42,28 +42,27 @@ let maxPicIndex = picsArray.length;
 const picHolderDiv = document.querySelector('[data-pic]');
 const modalDiv = document.querySelector('[data-modal]');
 const picFrameDiv = document.querySelector('[data-frame]');
+let modalVisible = false;
 
-modalDiv.addEventListener('click', function () {
+function hideModal() {
     modalDiv.classList.toggle('modal-hidden');
-});
-
+    modalVisible = false;
+}
 function getURL(thumbUrl) {
     //converts the thumbnail URL to the large image url
     return picsArray[picsArray.map(x => x.thumb).indexOf(thumbUrl)].url;
 }
-
 function makeImg(makeUrl, makeTitle) {
     const newImg = document.createElement('img');
     makeUrl = makeUrl.slice(5, makeUrl.length-2)  // trim off all but the actual URL
     newImg.setAttribute('src', getURL(makeUrl));
     newImg.setAttribute('alt', makeTitle);
+    newImg.setAttribute('data-bigpic','');
     return newImg;
 }
-
 function loadPics() {
     const newImgThumbDiv = document.createElement('div');
     newImgThumbDiv.classList.add('picThumbnailHolder');
-    // newImgThumbDiv.setAttribute('style', `background-image: url("${picsArray[currentPicIndex].url}")`);
     newImgThumbDiv.setAttribute('style', `background-image: url("${picsArray[currentPicIndex].thumb}")`);
     newImgThumbDiv.setAttribute('title', picsArray[currentPicIndex].altText);
     picHolderDiv.appendChild(newImgThumbDiv);
@@ -72,18 +71,43 @@ function loadPics() {
         picFrameDiv.innerHTML = '';
         picFrameDiv.appendChild(clickedImg);
         modalDiv.classList.toggle('modal-hidden');
+        modalVisible = true;
     });
-
     currentPicIndex = (currentPicIndex+1) % maxPicIndex;
 }
+function showPrevPic(){
+    const bigImg = document.querySelector('[data-bigpic]');
+    let newIndex = picsArray.map(x => x.url).indexOf(bigImg.src) - 1;
+    if (newIndex < 0) {newIndex = maxPicIndex - 1;};
+    bigImg.src = picsArray[newIndex].url;
+    bigImg.alt = picsArray[newIndex].altText;
+}
+function showNextPic(){
+    const bigImg = document.querySelector('[data-bigpic]');
+    let newIndex = picsArray.map(x => x.url).indexOf(bigImg.src) + 1;
+    if (newIndex === maxPicIndex) {newIndex = 0;};
+    bigImg.src = picsArray[newIndex].url;
+    bigImg.alt = picsArray[newIndex].altText;
+}
 
-
-
+modalDiv.addEventListener('click', hideModal);
 picsArray.forEach(loadPics);
 
-
 window.addEventListener('keydown', function (event) {
-    // debugger;
-    console.log(event.keyCode);
+    if (modalVisible) {
+        if (event.keyCode === 27) {
+            hideModal();
+        } else if ([37, 40, 80].includes(event.keyCode)) {
+            // show previous pic if left arrow, down arrow, or p are pressed
+            showPrevPic();
+        } else if ([32, 38, 39, 78].includes(event.keyCode)) {
+            // show next pic if space, up arrow, right arrow, or n are pressed
+            showNextPic();
+        }
+    };
 });
 
+
+// ideas:
+// - add/delete options for adding new pics and removing existing ones
+// - use local storage to keep up with images the user added

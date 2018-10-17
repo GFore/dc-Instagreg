@@ -37,6 +37,7 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     transition: background-position 0.35s;
+    /* order: 1; */
 }
 
 .picThumbnailHolder:hover {
@@ -68,7 +69,6 @@ main {
 .picFrame {
     width: 90%;
     height: 95%;
-    /* outline: 2px solid red; */
     margin: 20px;
     text-align: center;
 }
@@ -77,3 +77,9 @@ main {
     max-width: 100%;
 }
 
+
+footer {
+    /* justify-self: flex-end; */
+    text-align: center;
+    outline: 2px solid red;
+}
